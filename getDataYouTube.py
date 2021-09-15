@@ -120,6 +120,27 @@ mydict = {"ChannelName": channelName, "Subscribers": subscribers,
           "ViewsCount": contVistas, "VideosCount": cantVideos}
 x = mycol.insert_one(mydict)
 #-----------------------------------------------------------------------------------------------------------
+#Canal 6
+channelName = 'Franco Escamilla'
+snippets = youtube.search().list(part='snippet', type='channel', q=channelName).execute()
+
+channelId = snippets['items'][0]['snippet']['channelId']
+stats = youtube.channels().list(part='statistics', id=channelId).execute()
+subscribers = stats['items'][0]['statistics']['subscriberCount']
+contVistas = stats['items'][0]['statistics']['viewCount']
+cantVideos = stats['items'][0]['statistics']['videoCount']
+print(f'Nombre del Canal: TheGrefg')
+print(f'Subscritores: {int(subscribers).__format__(",")}')
+print(f'Vistas del canal: {int(contVistas).__format__(",")}')
+print(f'Total de videos: {int(cantVideos).__format__(",")}')
+print(f'ID del 1er canal: {channelId}')
+print('Descripcion del canal: ')
+print(snippets['items'][0]['snippet']['description'] + '\n')
+
+mydict = {"ChannelName": channelName, "Subscribers": subscribers,
+          "ViewsCount": contVistas, "VideosCount": cantVideos}
+x = mycol.insert_one(mydict)
+#-----------------------------------------------------------------------------------------------------------
 #Crea archvio JSON para exportar luego a la base de datos
 
 # def creararchivo():
