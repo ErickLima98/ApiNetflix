@@ -1,4 +1,5 @@
 from googleapiclient.discovery import build
+from googleapiclient.discovery_cache.file_cache import FILENAME
 #import pandas as pd
 
 #Canal 1
@@ -102,4 +103,18 @@ print(f'Vistas del canal: {int(contVistas).__format__(",")}')
 print(f'Total de videos: {int(cantVideos).__format__(",")}')
 print(f'ID del 5to canal: {channelId}')
 print('Descripcion del canal: ')
-print(snippets['items'][0]['snippet']['description'] + '\n')
+print(snippets['items'][0]['snippet']['description'] + '\n') 
+
+#-----------------------------------------------------------------------------------------------------------
+#Crea archvio JSON para exportar luego a la base de datos
+
+def creararchivo():
+    archivo=open('datos.json', 'w')
+    archivo.close()
+
+def escribir():
+    archivo=open('datos.json', 'a')
+    archivo.write('hola mundo')
+
+creararchivo()
+escribir()  
