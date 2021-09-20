@@ -1,7 +1,5 @@
 from googleapiclient.discovery import build
-#from googleapiclient.discovery_cache.file_cache import FILENAME
 import pymongo
-#import pandas as pd
 
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
 mydb = myclient["pruebaAPI"]
@@ -27,8 +25,8 @@ print(f'ID del 1er canal: {channelId}')
 print('Descripcion del canal: ')
 print(snippets['items'][0]['snippet']['description'] + '\n')
 
-mydict = {"ChannelName": channelName, "Subscribers": subscribers,
-          "ViewsCount": contVistas, "VideosCount": cantVideos}
+mydict = {"ChannelName": channelName, "Subscribers": int(subscribers),
+          "ViewsCount": int(contVistas), "VideosCount": int(cantVideos)}
 x = mycol.insert_one(mydict)
 
 #-----------------------------------------------------------------------------------------------------------
@@ -50,8 +48,8 @@ print(f'ID del 2do canal: {channelId}')
 print('Descripcion del canal: ')
 print(snippets['items'][0]['snippet']['description'] + '\n')
 
-mydict = {"ChannelName": channelName, "Subscribers": subscribers,
-          "ViewsCount": contVistas, "VideosCount": cantVideos}
+mydict = {"ChannelName": channelName, "Subscribers": int(subscribers),
+          "ViewsCount": int(contVistas), "VideosCount": int(cantVideos)}
 x = mycol.insert_one(mydict)
 #-----------------------------------------------------------------------------------------------------------
 
@@ -72,8 +70,8 @@ print(f'ID del 3er canal: {channelId}')
 print('Descripcion del canal: ')
 print(snippets['items'][0]['snippet']['description'] + '\n')
 
-mydict = {"ChannelName": channelName, "Subscribers": subscribers,
-          "ViewsCount": contVistas, "VideosCount": cantVideos}
+mydict = {"ChannelName": channelName, "Subscribers": int(subscribers),
+          "ViewsCount": int(contVistas), "VideosCount": int(cantVideos)}
 x = mycol.insert_one(mydict)
 #-----------------------------------------------------------------------------------------------------------
 
@@ -93,8 +91,8 @@ print(f'Total de videos: {int(cantVideos).__format__(",")}')
 print(f'ID del 4to canal: {channelId}')
 print('Descripcion del canal: ')
 print(snippets['items'][0]['snippet']['description'] + '\n')
-mydict = {"ChannelName": channelName, "Subscribers": subscribers,
-          "ViewsCount": contVistas, "VideosCount": cantVideos}
+mydict = {"ChannelName": channelName, "Subscribers": int(subscribers),
+          "ViewsCount": int(contVistas), "VideosCount": int(cantVideos)}
 x = mycol.insert_one(mydict)
 
 #-----------------------------------------------------------------------------------------------------------
@@ -116,8 +114,8 @@ print(f'ID del 5to canal: {channelId}')
 print('Descripcion del canal: ')
 print(snippets['items'][0]['snippet']['description'] + '\n') 
 
-mydict = {"ChannelName": channelName, "Subscribers": subscribers,
-          "ViewsCount": contVistas, "VideosCount": cantVideos}
+mydict = {"ChannelName": channelName, "Subscribers": int(subscribers),
+          "ViewsCount": int(contVistas), "VideosCount": int(cantVideos)}
 x = mycol.insert_one(mydict)
 #-----------------------------------------------------------------------------------------------------------
 #Canal 6
@@ -137,19 +135,6 @@ print(f'ID del 1er canal: {channelId}')
 print('Descripcion del canal: ')
 print(snippets['items'][0]['snippet']['description'] + '\n')
 
-mydict = {"ChannelName": channelName, "Subscribers": subscribers,
-          "ViewsCount": contVistas, "VideosCount": cantVideos}
+mydict = {"ChannelName": channelName, "Subscribers": int(subscribers),
+          "ViewsCount": int(contVistas), "VideosCount": int(cantVideos)}
 x = mycol.insert_one(mydict)
-#-----------------------------------------------------------------------------------------------------------
-#Crea archvio JSON para exportar luego a la base de datos
-
-# def creararchivo():
-#     archivo=open('datos.json', 'w')
-#     archivo.close()
-
-# def escribir():
-#     archivo=open('datos.json', 'a')
-#     archivo.write('hola mundo')
-
-# creararchivo()
-# escribir()  
