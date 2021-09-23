@@ -1,5 +1,6 @@
 from googleapiclient.discovery import build
 import pymongo
+import mysql
 
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
 mydb = myclient["pruebaAPI"]
@@ -7,6 +8,13 @@ mycol = mydb["Youtube"]
 
 api_key = 'AIzaSyBKe0n9tKUtFh7Bja5DUXab3mT-ZDUe4Ww'
 youtube = build('youtube', 'v3', developerKey=api_key)
+
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="root",
+  password="ljrp",
+  database="youtube"
+)
 
 #Canal 1
 channelName = 'TheGrefg'
@@ -29,6 +37,16 @@ mydict = {"ChannelName": channelName, "Subscribers": int(subscribers),
           "ViewsCount": int(contVistas), "VideosCount": int(cantVideos)}
 x = mycol.insert_one(mydict)
 
+
+mycursor = mydb.cursor()
+
+sql = "INSERT INTO youtube (ChannelName, Subscribers, ViewsCount, VideosCount) VALUES (%s, %s, %s, %s)"
+val = ("TheGrefg", int(subscribers), int(contVistas), int(cantVideos))
+mycursor.execute(sql, val)
+
+mydb.commit()
+
+print(mycursor.rowcount, "record inserted.")
 #-----------------------------------------------------------------------------------------------------------
 
 #Canal 2
@@ -51,6 +69,16 @@ print(snippets['items'][0]['snippet']['description'] + '\n')
 mydict = {"ChannelName": channelName, "Subscribers": int(subscribers),
           "ViewsCount": int(contVistas), "VideosCount": int(cantVideos)}
 x = mycol.insert_one(mydict)
+
+mycursor = mydb.cursor()
+
+sql = "INSERT INTO youtube (ChannelName, Subscribers, ViewsCount, VideosCount) VALUES (%s, %s, %s, %s)"
+val = ("Luisito Comunica", int(subscribers), int(contVistas), int(cantVideos))
+mycursor.execute(sql, val)
+
+mydb.commit()
+
+print(mycursor.rowcount, "record inserted.")
 #-----------------------------------------------------------------------------------------------------------
 
 #Canal 3
@@ -73,6 +101,16 @@ print(snippets['items'][0]['snippet']['description'] + '\n')
 mydict = {"ChannelName": channelName, "Subscribers": int(subscribers),
           "ViewsCount": int(contVistas), "VideosCount": int(cantVideos)}
 x = mycol.insert_one(mydict)
+
+mycursor = mydb.cursor()
+
+sql = "INSERT INTO youtube (ChannelName, Subscribers, ViewsCount, VideosCount) VALUES (%s, %s, %s, %s)"
+val = ("Ubaman", int(subscribers), int(contVistas), int(cantVideos))
+mycursor.execute(sql, val)
+
+mydb.commit()
+
+print(mycursor.rowcount, "record inserted.")
 #-----------------------------------------------------------------------------------------------------------
 
 #Canal 4
@@ -95,6 +133,15 @@ mydict = {"ChannelName": channelName, "Subscribers": int(subscribers),
           "ViewsCount": int(contVistas), "VideosCount": int(cantVideos)}
 x = mycol.insert_one(mydict)
 
+mycursor = mydb.cursor()
+
+sql = "INSERT INTO youtube (ChannelName, Subscribers, ViewsCount, VideosCount) VALUES (%s, %s, %s, %s)"
+val = ("Coreano Vlogs", int(subscribers), int(contVistas), int(cantVideos))
+mycursor.execute(sql, val)
+
+mydb.commit()
+
+print(mycursor.rowcount, "record inserted.")
 #-----------------------------------------------------------------------------------------------------------
 
 #Canal 5
@@ -117,6 +164,16 @@ print(snippets['items'][0]['snippet']['description'] + '\n')
 mydict = {"ChannelName": channelName, "Subscribers": int(subscribers),
           "ViewsCount": int(contVistas), "VideosCount": int(cantVideos)}
 x = mycol.insert_one(mydict)
+
+mycursor = mydb.cursor()
+
+sql = "INSERT INTO youtube (ChannelName, Subscribers, ViewsCount, VideosCount) VALUES (%s, %s, %s, %s)"
+val = ("Auron", int(subscribers), int(contVistas), int(cantVideos))
+mycursor.execute(sql, val)
+
+mydb.commit()
+
+print(mycursor.rowcount, "record inserted.")
 #-----------------------------------------------------------------------------------------------------------
 #Canal 6
 channelName = 'Franco Escamilla'
@@ -138,3 +195,13 @@ print(snippets['items'][0]['snippet']['description'] + '\n')
 mydict = {"ChannelName": channelName, "Subscribers": int(subscribers),
           "ViewsCount": int(contVistas), "VideosCount": int(cantVideos)}
 x = mycol.insert_one(mydict)
+
+mycursor = mydb.cursor()
+
+sql = "INSERT INTO youtube (ChannelName, Subscribers, ViewsCount, VideosCount) VALUES (%s, %s, %s, %s)"
+val = ("Franco Escamilla", int(subscribers), int(contVistas), int(cantVideos))
+mycursor.execute(sql, val)
+
+mydb.commit()
+
+print(mycursor.rowcount, "record inserted.")
