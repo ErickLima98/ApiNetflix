@@ -1,6 +1,7 @@
 from googleapiclient.discovery import build
-from datetime import date, datetime
+import datetime
 import pymongo
+
 
 
 def insertChannelMongo(nameChannel):
@@ -11,9 +12,6 @@ def insertChannelMongo(nameChannel):
     subscribers = stats['items'][0]['statistics']['subscriberCount']
     contVistas = stats['items'][0]['statistics']['viewCount']
     cantVideos = stats['items'][0]['statistics']['videoCount']
-    today = date.today()
-    # dd/mm/YY
-    dateA = today.strftime("%d/%m/%Y")
     mydict = {"ChannelName": nameChannel, "Subscribers": int(subscribers),
               "ViewsCount": int(contVistas), "VideosCount": int(cantVideos), "Fecha": datetime.datetime.today()}
     x = mycol.insert_one(mydict)
